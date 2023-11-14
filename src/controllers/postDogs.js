@@ -49,7 +49,7 @@ const postDogs = async (req, res) => {
             height,
             weight,
             years,
-        });
+       });
 
         await createdDog.setTemperaments(createdTemperaments);
 
