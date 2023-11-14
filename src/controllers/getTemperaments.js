@@ -12,10 +12,15 @@ const getTemperaments = async (req, res) => {
             return res.status(404).json({ error: 'No se encontraron temperamentos en la API.' });
         }
 
-        const allTemperaments = response.data
-            .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) // combina todo los array resultantes
-            .filter((temp, index, self) => self.indexOf(temp) === index); // Filtra elementos duplicados
-  
+        // const allTemperaments = response.data
+        //     .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) // combina todo los array resultantes
+        //     .filter((temp, index, self) => self.indexOf(temp) === index); // Filtra elementos duplicados
+
+        const allTemperaments = new Set( response.data
+             .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) );
+
+        // const allTemperaments = [...allTemperamentsSet];
+
         allTemperaments.map(async (temp) => {
              await Temperament.findOrCreate({ where: { temperament: temp } }); 
         })
