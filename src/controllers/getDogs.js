@@ -47,7 +47,7 @@ const { URL, IMG } = process.env;
 
 // module.exports = getDogs
 
-// Función para obtener datos de la base de datos
+
 const getDogsFromDB = async () => {
     try {
         const dogsFromDB = await Dog.findAll({ include: Temperament });
@@ -65,7 +65,7 @@ const getDogsFromDB = async () => {
     }
 };
 
-// Función para obtener datos de la API
+
 const getDogsFromAPI = async () => {
     try {
         const response = await axios.get(URL);
