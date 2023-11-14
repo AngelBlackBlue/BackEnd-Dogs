@@ -5,7 +5,7 @@ const cors = require('cors')
 
 
 server.use(express.json())
-server.use(cors({origin: 'https://pi-dog-main-git-main-angelblackblue.vercel.app'}));
+server.use(cors());
 server.use('/', routers)
 
 module.exports = server
