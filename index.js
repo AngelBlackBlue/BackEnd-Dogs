@@ -9,6 +9,6 @@ server.listen(PORT, () => {
 
   console.log(`Server on port: ${PORT}`)
 
-  conn.sync({ force: false });
+  conn.sync({ force: true });
 
 });
