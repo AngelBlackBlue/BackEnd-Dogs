@@ -6,7 +6,7 @@ const { URL } = process.env;
 const getTemperaments = async (req, res) => {
     try {
 
-        const verify = await Temperament.findAll()
+        let verify = await Temperament.findAll()
 
         if (!verify) {
         
@@ -24,12 +24,13 @@ const getTemperaments = async (req, res) => {
             allTemperaments.map(async (temp) => {
              await Temperament.findOrCreate({ where: { temperament: temp } }); 
             })
+            
+             verify = await Temperament.findAll();
         
         }
-
-        const temperamentsFromDB = await Temperament.findAll();
-
-        return res.status(200).json(temperamentsFromDB);
+        
+        return res.status(200).json(verify);
+        
     } catch ({error}) {
         
         return res.status(500).json({ error: 'Error al obtener y guardar los temperamentos.' });
