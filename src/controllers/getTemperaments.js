@@ -8,7 +8,7 @@ const getTemperaments = async (req, res) => {
 
         let verify = await Temperament.findAll()
 
-        if (!verify) {
+        if (!verify || response.data.length === 0) {
         
             const response = await axios.get(URL);
 
@@ -30,7 +30,7 @@ const getTemperaments = async (req, res) => {
         }
         
         return res.status(200).json(verify);
-        
+
     } catch ({error}) {
         
         return res.status(500).json({ error: 'Error al obtener y guardar los temperamentos.' });
