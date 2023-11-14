@@ -8,7 +8,7 @@ const getTemperaments = async (req, res) => {
 
         let verify = await Temperament.findAll()
 
-        if (!verify || response.data.length === 0) {
+        if (!verify || verify.length === 0) {
         
             const response = await axios.get(URL);
 
