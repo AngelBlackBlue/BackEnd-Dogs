@@ -31,9 +31,9 @@ const getTemperaments = async (req, res) => {
         
         return res.status(200).json(verify);
 
-    } catch ({error}) {
+    } catch ({message}) {
         
-        return res.status(500).json({ error: 'Error al obtener y guardar los temperamentos.' });
+        return res.status(500).json({message});
     }
 };
 
