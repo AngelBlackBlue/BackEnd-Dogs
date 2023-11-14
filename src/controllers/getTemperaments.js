@@ -5,27 +5,27 @@ const { URL } = process.env;
 
 const getTemperaments = async (req, res) => {
     try {
+
+        const verify = await Temperament.findAll()
+
+        if (!verify) {
         
-        const response = await axios.get(URL);
+            const response = await axios.get(URL);
 
-        if (!response.data || response.data.length === 0) {
-            return res.status(404).json({ error: 'No se encontraron temperamentos en la API.' });
+            if (!response.data || response.data.length === 0) {
+                return res.status(404).json({ error: 'No se encontraron temperamentos en la API.' });
+            }
+
+            const allTemperamentsSet = new Set( response.data
+                 .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) );
+
+            const allTemperaments = [...allTemperamentsSet];
+
+            allTemperaments.map(async (temp) => {
+             await Temperament.findOrCreate({ where: { temperament: temp } }); 
+            })
+        
         }
-
-        const allTemperamentsSet = new Set( response.data
-             .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) );
-
-        const allTemperaments = [...allTemperamentsSet];
-
-  
-        // allTemperaments.map(async (temp) => {
-        //      await Temperament.findOrCreate({ where: { temperament: temp } }); 
-        // })
-
-        await Promise.all(allTemperaments.map(async (temp) => {
-        await Temperament.findOrCreate({ where: { temperament: temp } }); 
-        }));
-
 
         const temperamentsFromDB = await Temperament.findAll();
 
