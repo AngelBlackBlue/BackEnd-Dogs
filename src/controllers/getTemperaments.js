@@ -33,7 +33,7 @@ const getTemperaments = async (req, res) => {
 
     } catch ({message}) {
         
-        return res.status(500).json({message});
+        return res.status(500).json({message });
     }
 };
 
