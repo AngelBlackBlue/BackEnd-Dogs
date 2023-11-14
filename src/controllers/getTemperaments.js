@@ -16,11 +16,12 @@ const getTemperaments = async (req, res) => {
         //     .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) // combina todo los array resultantes
         //     .filter((temp, index, self) => self.indexOf(temp) === index); // Filtra elementos duplicados
 
-        const allTemperaments = new Set( response.data
+        const allTemperamentsSet = new Set( response.data
              .flatMap((dog) => (dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [])) );
 
-        // const allTemperaments = [...allTemperamentsSet];
+        const allTemperaments = [...allTemperamentsSet];
 
+  
         allTemperaments.map(async (temp) => {
              await Temperament.findOrCreate({ where: { temperament: temp } }); 
         })
