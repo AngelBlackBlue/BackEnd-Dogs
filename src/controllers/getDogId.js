@@ -5,10 +5,12 @@ const { URL, IMG } = process.env;
 
 
 const getDogId = async (req, res) => {
-    const { idRaza } = req.params;
-
+    
+    
     try {
-                
+        
+        const { idRaza } = req.params;
+        
         if (isNaN(idRaza)){
             const dogFromDB = await Dog.findOne({
                 where: { id: idRaza },
@@ -29,7 +31,6 @@ const getDogId = async (req, res) => {
         }
 
              
-
         const response = await axios.get(`${URL}/${idRaza}`);
 
         if (!response.data.id) return res.status(404).json({ error: 'Raza de perro no encontrada.' });
