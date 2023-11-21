@@ -41,6 +41,6 @@ Para comenzar a utilizar la aplicacion solo debes clickear [AQUÍ](https://front
 [![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
 ![Vercel](https://img.shields.io/badge/vercel-00000?style=for-the-badge&logo=vercel&logoColor=black&color=white)
 
-### Link para visualizar el código de la API 
+### Link para visualizar el código de la APP 
 
-El link de la API  se encuentra en otra carpeta de GitHub, clickear [AQUÍ](https://github.com/AngelBlackBlue/BackEnd-Dogs) para verlo. 
+El link de la APP se encuentra en otra carpeta de GitHub, clickear [AQUÍ](https://github.com/AngelBlackBlue/FrontEnd-Dogs) para verlo. 
